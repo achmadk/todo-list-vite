@@ -1,7 +1,7 @@
 import cn from 'clsx'
 import type { FC } from 'react'
-import { useMemo } from 'react'
-import type { TodoListProps } from '../type'
+import { useCallback, useMemo } from 'react'
+import type { Todo, TodoListProps } from '../type'
 import TodoItem from './TodoItem'
 
 const TodoList: FC<TodoListProps> = ({
@@ -16,6 +16,24 @@ const TodoList: FC<TodoListProps> = ({
     () => [...todos].sort((a, b) => a.id - b.id),
     [todos]
   )
+  const handleOnToggle = useCallback(
+    (id: number) => () => {
+      handleToggleClick(id)
+    },
+    [handleToggleClick]
+  )
+  const handleOnEdit = useCallback(
+    (todo: Todo) => {
+      handleEditClick(todo)
+    },
+    [handleEditClick]
+  )
+  const handleOnDelete = useCallback(
+    (id: number) => () => {
+      handleDeleteClick(id)
+    },
+    [handleDeleteClick]
+  )
 
   const todoList = useMemo(
     () =>
@@ -27,23 +45,18 @@ const TodoList: FC<TodoListProps> = ({
             key={todo.id}
             todo={todo}
             isCompleted={isTodoCompleted}
-            onToggle={() => handleToggleClick(todo.id)}
-            onEdit={() => handleEditClick(todo.id)}
-            onDelete={() => handleDeleteClick(todo.id)}
+            onToggle={handleOnToggle(todo.id)}
+            onEdit={handleOnEdit}
+            onDelete={handleOnDelete(todo.id)}
           />
         )
       }),
-    [
-      sortedTodos,
-      completedTodos,
-      handleEditClick,
-      handleDeleteClick,
-      handleToggleClick
-    ]
+    [sortedTodos, completedTodos, handleOnEdit, handleOnDelete, handleOnToggle]
   )
 
   return (
     <div
+      data-testid="todo-list"
       className={cn('overflow-auto h-full', {
         'max-h-[300px]': todos.length > 4
       })}

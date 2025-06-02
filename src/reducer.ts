@@ -1,7 +1,12 @@
 import type { Action, State } from './type'
 
-export const todoReducer = (state: State, action: Action): State => {
-  switch (action.type) {
+export type Reducer<S, A> = (prevState: S, action?: A) => S
+
+export const todoReducer: Reducer<State, Action | null> = (
+  state: State,
+  action: Action | null = null
+): State => {
+  switch (action?.type) {
     case 'SET_COMPLETED_TODOS':
       return { ...state, completedTodos: action.payload }
     case 'ADD_TODO':

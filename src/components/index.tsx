@@ -1,9 +1,11 @@
+import ReactDocumentPiP from 'react-document-picture-in-picture'
+
 import useTodoActions from '../hooks/useTodoActions'
 import DarkMode from './DarkMode'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 
-export default function TodoPage() {
+const TodoPage = () => {
   const {
     todos,
     error,
@@ -27,7 +29,7 @@ export default function TodoPage() {
           {!error && <TodoForm onAddTodo={handleAddTodo} />}
         </div>
         <TodoList
-          todos={todos || []}
+          todos={todos ?? []}
           error={error}
           completedTodos={completedTodos}
           handleEditClick={handleEditClick}
@@ -38,3 +40,27 @@ export default function TodoPage() {
     </div>
   )
 }
+
+// export default TodoPage
+
+const App = () => {
+  return (
+    <ReactDocumentPiP
+      featureUnavailableRenderer={(reason) => reason && <TodoPage />}
+      buttonRenderer={({ open, close, toggle, isOpen }) => 
+        <div>
+            <b>Is {isOpen ? 'Open' : 'Closed'}</b>
+            {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+            <button onClick={open}>Open</button>
+            {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+            <button onClick={close}>Close</button>
+            {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+            <button onClick={toggle}>Toggle</button>
+        </div>}
+    >
+      <TodoPage />
+    </ReactDocumentPiP>
+  )
+}
+
+export default App

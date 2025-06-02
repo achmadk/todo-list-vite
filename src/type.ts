@@ -18,10 +18,13 @@ export interface TodoFormProps {
  * Props for the TodoList component
  */
 export interface TodoListProps {
-  todos: Todo[]
+  /**
+   * @default []
+   */
+  todos?: Todo[]
   error: boolean
   completedTodos: number[] // Assuming the array contains the IDs of completed todos
-  handleEditClick: (todoId: number) => void
+  handleEditClick: (todo: Todo) => void
   handleDeleteClick: (todoId: number) => void
   handleToggleClick: (todoId: number) => void
 }

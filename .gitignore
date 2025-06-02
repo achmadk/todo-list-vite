@@ -28,3 +28,10 @@ dist-ssr
 css/build.css
 .eslintcache
 .env*.local
+
+**/__snapshots__/*
+coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
