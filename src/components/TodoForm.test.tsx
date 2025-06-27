@@ -8,7 +8,7 @@ describe('test TodoForm component', () => {
   it('successfully simulate add todo', async () => {
     const user = userEvent.setup()
     const { container, unmount } = render(<TodoForm onAddTodo={console.log} />)
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    // biome-ignore lint/style/noNonNullAssertion: fieldName is exist
     const fieldName = container.querySelector('#add-todo')!
     const buttonSubmitTodo = screen.getByTestId('button-submit-todo')
     await user.type(fieldName, 'develop app with vue')

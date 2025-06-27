@@ -13,7 +13,7 @@ const TodoItem: FC<{
   const [isEditing, setEditing] = useState(false)
   const [updatedTodo, setUpdatedTodo] = useState(() => todo)
 
-  // biome-ignore lint/style/noNonNullAssertion: <explanation>
+  // biome-ignore lint/style/noNonNullAssertion: useRef needs 1 parameter
   const editFieldRef = useRef<HTMLInputElement>(null!)
 
   const handleInputUpdateChanged = (event: ChangeEvent<HTMLInputElement>) => {

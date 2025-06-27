@@ -22,7 +22,7 @@ export default function DarkMode() {
     }
   }
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: componentDidMount implementation for useEffect hooks.
   useEffect(() => {
     const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const isSystemDarkMode = darkModeMediaQuery.matches

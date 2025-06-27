@@ -1,6 +1,6 @@
-import { disposableRenderHook } from '@/utils'
 // @vitest-environment jsdom
 import { describe, expect, it, vi } from 'vitest'
+import { disposableRenderHook } from '@/utils'
 import useTodoActions from './useTodoActions'
 
 describe('test useTodoActions hooks', () => {
@@ -85,7 +85,7 @@ describe('test useTodoActions hooks', () => {
       )
       await renderHookResult.result.current.handleAddTodo('hello react devs!')
       renderHookResult.rerender()
-      // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      // biome-ignore lint/style/noNonNullAssertion: todo value is always defined
       let todo = renderHookResult.result.current.todos?.[0]!
       renderHookResult.result.current.handleEditClick(todo)
       expect(spyHandleEditClick).toHaveBeenCalledOnce()
@@ -95,7 +95,7 @@ describe('test useTodoActions hooks', () => {
       renderHookResult.result.current.handleEditClick({ ...todo, text: '   ' })
       renderHookResult.rerender()
 
-      // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      // biome-ignore lint/style/noNonNullAssertion: todo value is always defined
       todo = renderHookResult.result.current.todos?.[0]!
       renderHookResult.result.current.handleEditClick(todo)
       renderHookResult.rerender()
@@ -109,7 +109,7 @@ describe('test useTodoActions hooks', () => {
         renderHookResult.result.current,
         'handleDeleteClick'
       )
-      // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      // biome-ignore lint/style/noNonNullAssertion: todo value is always defined
       const todo = renderHookResult.result.current.todos?.[0]!
       renderHookResult.result.current.handleDeleteClick(todo.id)
       expect(spyHandleDeleteClick).toHaveBeenCalledOnce()

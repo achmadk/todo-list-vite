@@ -1,10 +1,10 @@
 import {
   type Queries,
+  type queries,
   type RenderHookOptions,
   type RenderHookResult,
   type RenderOptions,
   type RenderResult,
-  type queries,
   render,
   renderHook
 } from '@testing-library/react'

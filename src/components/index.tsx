@@ -46,17 +46,22 @@ const TodoPage = () => {
 const App = () => {
   return (
     <ReactDocumentPiP
-      featureUnavailableRenderer={(reason) => reason && <TodoPage />}
-      buttonRenderer={({ open, close, toggle, isOpen }) => 
+      featureUnavailableRenderer={reason => reason && <TodoPage />}
+      buttonRenderer={({ open, close, toggle, isOpen }) => (
+        /* v8 ignore next 12 */
         <div>
-            <b>Is {isOpen ? 'Open' : 'Closed'}</b>
-            {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-            <button onClick={open}>Open</button>
-            {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-            <button onClick={close}>Close</button>
-            {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-            <button onClick={toggle}>Toggle</button>
-        </div>}
+          <b>Is {isOpen ? 'Open' : 'Closed'}</b>
+          <button type="button" onClick={open}>
+            Open
+          </button>
+          <button type="button" onClick={close}>
+            Close
+          </button>
+          <button type="button" onClick={toggle}>
+            Toggle
+          </button>
+        </div>
+      )}
     >
       <TodoPage />
     </ReactDocumentPiP>

@@ -1,6 +1,6 @@
-import useTodoActions from '@/hooks/useTodoActions'
 // @vitest-environment jsdom
 import { describe, expect, it, vi } from 'vitest'
+import useTodoActions from '@/hooks/useTodoActions'
 import {
   disposableRender,
   disposableRenderHook

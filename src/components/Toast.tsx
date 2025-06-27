@@ -7,7 +7,7 @@ export const showSuccessToast = (
   toast.success(message, {
     icon: (
       <div className="toast-icon toast-success-icon">
-        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: title is not required */}
         <svg
           className="size-5"
           xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ export const showErrorToast = (message: Parameters<typeof toast.error>[0]) => {
   toast.error(message, {
     icon: (
       <div className="toast-icon toast-error-icon">
-        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: title is not required */}
         <svg
           className="size-5"
           xmlns="http://www.w3.org/2000/svg"

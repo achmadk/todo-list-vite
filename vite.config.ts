@@ -1,7 +1,6 @@
-import react from '@vitejs/plugin-react-swc'
-// import million from 'million/compiler'
-import { defineConfig } from 'vite'
 import tailwind from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react-oxc'
+import { defineConfig } from 'vite'
 import tsconfig from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/

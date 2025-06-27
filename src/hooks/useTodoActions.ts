@@ -227,7 +227,7 @@ const useTodoActions = <D extends Todo = Todo>() => {
     [handleToggleTodo]
   )
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: `componentDidMount` implementation of `useEffect` hooks.
   useEffect(() => {
     fetchCompletedTodos()
   }, [])
