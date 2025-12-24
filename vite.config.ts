@@ -1,5 +1,5 @@
 import tailwind from '@tailwindcss/vite'
-import react from '@vitejs/plugin-react-oxc'
+import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import tsconfig from 'vite-tsconfig-paths'
 

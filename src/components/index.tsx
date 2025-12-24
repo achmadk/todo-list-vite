@@ -47,8 +47,8 @@ const App = () => {
   return (
     <ReactDocumentPiP
       featureUnavailableRenderer={reason => reason && <TodoPage />}
+      /* v8 ignore next 9 */
       buttonRenderer={({ open, close, toggle, isOpen }) => (
-        /* v8 ignore next 12 */
         <div>
           <b>Is {isOpen ? 'Open' : 'Closed'}</b>
           <button type="button" onClick={open}>

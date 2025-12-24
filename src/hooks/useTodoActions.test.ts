@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import { describe, expect, it, vi } from 'vitest'
+import type { Todo } from '@/type'
 import { disposableRenderHook } from '@/utils'
 import useTodoActions from './useTodoActions'
 
@@ -85,18 +86,19 @@ describe('test useTodoActions hooks', () => {
       )
       await renderHookResult.result.current.handleAddTodo('hello react devs!')
       renderHookResult.rerender()
-      // biome-ignore lint/style/noNonNullAssertion: todo value is always defined
-      let todo = renderHookResult.result.current.todos?.[0]!
+      let todo = renderHookResult.result.current.todos?.[0]
       renderHookResult.result.current.handleEditClick(todo)
       expect(spyHandleEditClick).toHaveBeenCalledOnce()
       renderHookResult.rerender()
       expect(renderHookResult.result.current.todos?.[0].completed).toBe(false)
 
-      renderHookResult.result.current.handleEditClick({ ...todo, text: '   ' })
+      renderHookResult.result.current.handleEditClick({
+        ...todo,
+        text: '   '
+      } as Todo)
       renderHookResult.rerender()
 
-      // biome-ignore lint/style/noNonNullAssertion: todo value is always defined
-      todo = renderHookResult.result.current.todos?.[0]!
+      todo = renderHookResult.result.current.todos?.[0]
       renderHookResult.result.current.handleEditClick(todo)
       renderHookResult.rerender()
     })
@@ -109,9 +111,10 @@ describe('test useTodoActions hooks', () => {
         renderHookResult.result.current,
         'handleDeleteClick'
       )
-      // biome-ignore lint/style/noNonNullAssertion: todo value is always defined
-      const todo = renderHookResult.result.current.todos?.[0]!
-      renderHookResult.result.current.handleDeleteClick(todo.id)
+      const todo = renderHookResult.result.current.todos?.[0]
+      if (todo) {
+        renderHookResult.result.current.handleDeleteClick(todo.id)
+      }
       expect(spyHandleDeleteClick).toHaveBeenCalledOnce()
       renderHookResult.rerender()
       expect(renderHookResult.result.current.todos?.length).toBe(1)

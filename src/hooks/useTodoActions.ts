@@ -207,8 +207,10 @@ const useTodoActions = <D extends Todo = Todo>() => {
   )
 
   const handleEditClick = useCallback(
-    (todo: Todo) => {
-      handleUpdateTodo(todo.id, todo.text)
+    (todo?: Todo) => {
+      if (todo) {
+        handleUpdateTodo(todo.id, todo.text)
+      }
     },
     [handleUpdateTodo]
   )

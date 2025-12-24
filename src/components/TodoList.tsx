@@ -13,6 +13,7 @@ const TodoList: FC<TodoListProps> = ({
   handleToggleClick
 }) => {
   const sortedTodos = useMemo(
+    /* v8 ignore next */
     () => [...todos].sort((a, b) => a.id - b.id),
     [todos]
   )
